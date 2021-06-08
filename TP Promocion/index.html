@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--HERE Maps-->
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Ubuntu&display=swap" rel="stylesheet">
+    <!--Fin de fuente-->
+    <!--BootStrap CDN-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!--FontAwesome-->
+    <script src="https://kit.fontawesome.com/aaa52daeea.js" crossorigin="anonymous"></script>
+    <!--Estilo-->
+    <link rel="stylesheet" href="customizedStyles.css">
+    <title>Trabajo Practico Final</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark sticky-top vw-100">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active text-white" href="#inicio"><i class="fas fa-home px-2"></i><b>Inicio</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#coordenadas"><i class="fas fa-search px-2"></i><b>Coordenadas</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#mapa"><i class="fas fa-map-marked-alt mx-2"></i><b>Mapa</b></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container-fluid pt-2 pb-5 text-wrap" id="inicio">
+        <div class="text-center">
+          <h1>Programacion 3</h1>
+          <img src="https://www.efundaap.com/wp-content/uploads/2020/02/UTN-FRC_logo-731x220.png" alt="" class="img-fluid">
+          <div class="container text-left" id="contenedor">
+            <p><label for=""><b>Alumno:</b></label> Pablo Augusto Correa Causa</p>
+            <p><label for=""><b>Legajo:</b></label> 111989</p>
+            <p><label for=""><b>Comision:</b></label> 2w1</p>
+            <p><label for=""><b>Año:</b></label> 2°</p>
+            <p><label for=""><b>Materia:</b></label> Programacion 3</p>
+            <p><label for=""><b>Profesor:</b></label> Nicolas Horenstein</p>
+            <p><label for=""><b>Resumen:</b></label> Realizamos una página web utilizando HTML, CSS, SweetAlert y Bootstrap. El sitio consta de tres secciones.
+            La primera sección es una presentación del trabajo. La segunda sección contiene un botón que cuando se lo presiona consulta una API provista
+            por el docente. La API devuelve la latitud y la longitud que carga un marcador en el mapa de la sección 3. La tercera y ultima sección contiene de un mapa.
+            Este mapa es una herramienta de HERE Technologies, que provee de diferentes herramientas y recursos para la localización de coordenadas</p>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid" id="coordenadas">
+        <div class="text-center py-5">
+          <h1>Coordenadas</h1>
+          <div class="container" id="contenedor">
+            <p class="text-left py-4">Presione el boton <i><b>Buscar</b></i> para generar un par (latitud, longitud) que será ubicado en el mapa de la siguiente seccion</p>
+            
+              <div class="form-group">
+                <label for="latitud">Latitud</label>
+                <input class="form-control" type="text" placeholder="Latitud" name="latitud" id="latitud" readonly>
+                
+              </div>
+              <div class="form-group">
+                <label for="longitud">Longitud</label>
+                <input class="form-control" type="text" placeholder="Longitud" name="longitud" id="longitud" readonly>
+              </div>
+              <button type="submit" class="btn btn-success" id="buscar" onclick="cargarCoordenadas()">Buscar</button>
+            
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid py-5" id="mapa">
+        <div class="text-center">
+          <h1>Mapa</h1>
+          <div class="container pb-5" id="contenedor" data-scroll-index="2">
+            <p class="py-3">Seccion 3</p>
+              <div style="height: 750px;width: 100vw;" id="mapContainer" class="container">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="scrollIt.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="ObtenerDatos.js">
+      
+    </script>
+
+</body>
+</html>

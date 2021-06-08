@@ -1,0 +1,26 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+#contenedor{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 25px;
+}
+#contenedor p{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#inicio{
+    background-color: #f9ed69;
+    color: #252a34;
+    
+}
+#inicio h1{
+    color: #222831;
+}
+#coordenadas{
+    background-color: #307672;
+  
+}
+#mapa{
+    background-color: #144d53;
+}
